@@ -6,16 +6,25 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      starwarsChars: [], initialURL: "https://swapi.co/api/people/", nextURL: '', prevURL: '',
+      starwarsChars: [], currentURL: "https://swapi.co/api/people/", nextURL: '', prevURL: '',
     };
   }
 
-  updatePageURLS() {
-    
+  updatePageURL(button) {
+    if (button){
+      this.setState({
+        currentURL: this.state.nextURL,
+      })
+    } else {
+      this.setState({
+      currentURL: this.state.prevURL,
+    })
+    }
+    this.getCharacters(this.state.currentURL);
   }
 
   componentDidMount() {
-    this.getCharacters(this.state.initialURL);
+    this.getCharacters(this.state.currentURL);
   }
 
   getCharacters = (URL) => {
@@ -27,7 +36,6 @@ class App extends Component {
         return res.json();
       })
       .then(data => {
-        console.log(data);
         this.setState({ starwarsChars: data.results });
         this.setState({ nextURL: data.next });
         this.setState({ prevURL: data.previous });
@@ -42,8 +50,8 @@ class App extends Component {
       <div className="App">
         <h1 className="Header">React Wars</h1>
         <Characters starWarsData =  {this.state.starwarsChars}/>
-        <button key="previous">PREVIOUS</button>
-        <button key="next">NEXT</button>
+        <button className="button" onClick={() => this.updatePageURL()}>PREVIOUS</button>
+        <button className="button" onClick={() => this.updatePageURL('next')}>NEXT</button>
         <p><span role="img" aria-label="stars">✨</span></p>
       </div>
     );
