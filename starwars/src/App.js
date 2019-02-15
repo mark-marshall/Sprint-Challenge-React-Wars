@@ -14,11 +14,11 @@ class App extends Component {
   }
 
   updatePageURL(next) {
-    if ((next) && (this.state.nextURL !== null)) {
+    if (next && this.state.nextURL !== null) {
       this.setState({
         currentURL: this.state.nextURL
       });
-    } else if ((!next) && (this.state.prevURL !== null)) {
+    } else if (!next && this.state.prevURL !== null) {
       this.setState({
         currentURL: this.state.prevURL
       });
