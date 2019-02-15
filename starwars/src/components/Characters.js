@@ -15,6 +15,7 @@ export default function Characters ({ starWarsData }) {
                 <li>Height: {char.height}</li>
                 <li>Mass: {char.mass}</li>
                 <li>Eye color: {char.eye_color}</li>
+                <li># Movies: {char.films.length}</li>
                 <li># Starships: {char.starships.length}</li>
                 <li># Vehicles: {char.vehicles.length}</li>
                </ul>
