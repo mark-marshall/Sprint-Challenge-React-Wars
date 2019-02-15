@@ -6,7 +6,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      starwarsChars: [], starwars2: 'sbdkb', getNext: this.getCharacters("https://swapi.co/api/people/?page=7&page2="),
+      starwarsChars: [], starwars2: 'sbdkb', getNext: this.getCharacters("https://swapi.co/api/people/?page=4&page2="), getPrev: this.getCharacters("https://swapi.co/api/people/?page=2&page2="), nextURL: '', prevURL: '',
     };
   }
 
@@ -24,9 +24,9 @@ class App extends Component {
       })
       .then(data => {
         console.log(data);
-        console.log(data.next);
-        console.log(data.prev);
         this.setState({ starwarsChars: data.results });
+        this.setState({ nextURL: data.next });
+        this.setState({ prevURL: data.previous });
       })
       .catch(err => {
         throw new Error(err);
