@@ -1,14 +1,15 @@
 import React from 'react';
+import './StarWars.css';
 
 export default function Characters ({ starWarsData }) {
     return (
-       <div className="charcer-bio-container">
+       <div className="character-bio-container">
        {
            starWarsData.map(char => 
-           <div key={char.name}>
+           <div key={char.name} className="bio-card">
                <h1 >{char.name}</h1>
                <div className="bio-pic"></div>
-               <ul>
+               <ul className="bio-list-container">
                 <li>Born: {char.birth_year}</li>
                 <li>Gender: {char.gender}</li>
                 <li>Height: {char.height}</li>
