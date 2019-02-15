@@ -13,12 +13,12 @@ class App extends Component {
     };
   }
 
-  updatePageURL(button) {
-    if (button) {
+  updatePageURL(next) {
+    if ((next) && (this.state.nextURL !== null)) {
       this.setState({
         currentURL: this.state.nextURL
       });
-    } else {
+    } else if ((!next) && (this.state.prevURL !== null)) {
       this.setState({
         currentURL: this.state.prevURL
       });
