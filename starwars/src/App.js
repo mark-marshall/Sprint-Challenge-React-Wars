@@ -6,12 +6,16 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      starwarsChars: [], starwars2: 'sbdkb', getNext: this.getCharacters("https://swapi.co/api/people/?page=4&page2="), getPrev: this.getCharacters("https://swapi.co/api/people/?page=2&page2="), nextURL: '', prevURL: '',
+      starwarsChars: [], initialURL: "https://swapi.co/api/people/", nextURL: '', prevURL: '',
     };
   }
 
+  updatePageURLS() {
+    
+  }
+
   componentDidMount() {
-    this.getCharacters("https://swapi.co/api/people/?page=3&page2=");
+    this.getCharacters(this.state.initialURL);
   }
 
   getCharacters = (URL) => {
@@ -38,6 +42,8 @@ class App extends Component {
       <div className="App">
         <h1 className="Header">React Wars</h1>
         <Characters starWarsData =  {this.state.starwarsChars}/>
+        <button key="previous">PREVIOUS</button>
+        <button key="next">NEXT</button>
         <p><span role="img" aria-label="stars">✨</span></p>
       </div>
     );
